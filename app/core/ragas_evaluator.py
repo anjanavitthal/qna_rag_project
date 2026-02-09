@@ -5,7 +5,7 @@ import time
 from typing import Any
 
 from datasets import Dataset
-from langchain_ollama import OllamaEmbeddings, ChatOllama
+from langchain_ollama import ChatOllama, OllamaEmbeddings
 from ragas import evaluate
 from ragas.metrics import answer_relevancy, faithfulness
 

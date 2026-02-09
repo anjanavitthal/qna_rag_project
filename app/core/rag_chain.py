@@ -6,7 +6,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_ollama import ChatOllama
 
-
 from app.config import get_settings
 from app.core.vector_store import VectorStoreService
 from app.utils.logger import get_logger

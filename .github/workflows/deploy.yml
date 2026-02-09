@@ -6,13 +6,13 @@ name: CD - Deploy to AWS
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:  # Allow manual trigger
 
 env:
-  AWS_REGION: us-east-1
-  ECR_REPOSITORY: rag-qa-system
-  APP_RUNNER_SERVICE: rag-qa-service
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: qna-rag-project
+  APP_RUNNER_SERVICE: qna-rag-service
 
 jobs:
   # ============================================

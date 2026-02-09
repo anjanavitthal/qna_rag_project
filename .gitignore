@@ -27,13 +27,6 @@ dist/
 htmlcov/
 .pytest_cache/
 
-# Data
-data/
-uploads/
-*.pdf
-*.csv
-*.txt
-
 # Logs
 *.log
 logs/

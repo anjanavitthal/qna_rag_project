@@ -43,9 +43,8 @@ class TestRAGASEvaluator:
 
         # Verify ChatOllama was called with RAGAS-specific settings
         mock_llm.assert_called_once_with(
-            model="gpt-4o",
+            model="llama3",
             temperature=0.1,
-            openai_api_key="test-key",
         )
 
         # Verify OllamaEmbeddings was called with RAGAS-specific settings
@@ -75,7 +74,6 @@ class TestRAGASEvaluator:
         mock_llm.assert_called_once_with(
             model="llama3",
             temperature=0.0,
-            openai_api_key="test-key",
         )
 
         # Verify OllamaEmbeddings was called with default settings

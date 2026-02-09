@@ -22,6 +22,9 @@ dist/
 *.swp
 *.swo
 
+# Data
+*accessKeys.csv
+
 # Testing
 .coverage
 htmlcov/

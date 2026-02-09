@@ -12,7 +12,7 @@ class TestRAGASEvaluator:
     """Test suite for RAGASEvaluator class."""
 
     @patch("app.core.ragas_evaluator.ChatOllama")
-    @patch("app.core.ragas_evaluator.OpenAIEmbeddings")
+    @patch("app.core.ragas_evaluator.OllamaEmbeddings")
     def test_evaluator_initialization(self, mock_embeddings, mock_llm):
         """Test that evaluator initializes correctly."""
         evaluator = RAGASEvaluator()
@@ -24,7 +24,7 @@ class TestRAGASEvaluator:
         assert evaluator.metrics[1].name == "answer_relevancy"
 
     @patch("app.core.ragas_evaluator.ChatOllama")
-    @patch("app.core.ragas_evaluator.OpenAIEmbeddings")
+    @patch("app.core.ragas_evaluator.OllamaEmbeddings")
     @patch("app.core.ragas_evaluator.get_settings")
     def test_evaluator_uses_separate_llm_config(self, mock_settings, mock_embeddings, mock_llm):
         """Test that evaluator uses separate RAGAS LLM configuration when provided."""
@@ -48,14 +48,13 @@ class TestRAGASEvaluator:
             openai_api_key="test-key",
         )
 
-        # Verify OpenAIEmbeddings was called with RAGAS-specific settings
+        # Verify OllamaEmbeddings was called with RAGAS-specific settings
         mock_embeddings.assert_called_once_with(
-            model="text-embedding-3-large",
-            openai_api_key="test-key",
+            model="nomic-embed-text",
         )
 
     @patch("app.core.ragas_evaluator.ChatOllama")
-    @patch("app.core.ragas_evaluator.OpenAIEmbeddings")
+    @patch("app.core.ragas_evaluator.OllamaEmbeddings")
     @patch("app.core.ragas_evaluator.get_settings")
     def test_evaluator_fallback_to_default_config(self, mock_settings, mock_embeddings, mock_llm):
         """Test that evaluator falls back to default LLM when RAGAS config is None."""
@@ -79,10 +78,9 @@ class TestRAGASEvaluator:
             openai_api_key="test-key",
         )
 
-        # Verify OpenAIEmbeddings was called with default settings
+        # Verify OllamaEmbeddings was called with default settings
         mock_embeddings.assert_called_once_with(
             model="nomic-embed-text",
-            openai_api_key="test-key",
         )
 
     def test_prepare_dataset(self):
